@@ -47,17 +47,14 @@
     <div class="container mt-3">
         <div class="navbar justify-content-end" id="text">
             <div class="btn btn-outline-secondary">
-                <a href="Login.html" class="text-light link-underline link-underline-opacity-0">Login</a>
+                <a href="index.html" class="text-light link-underline link-underline-opacity-0">Register</a>
             </div>
         </div>
         <div class="container p-3 rounded w-50">
-            <form action="Register.php" method="post" class="justify-content-center align-self-center needs-validation"
-                novalidate onsubmit="return checkPasswordMatch()">
+            <form action="LoginPHP.php" method="post" class="needs-validation" novalidate
+                onsubmit="return checkPasswordMatch()">
                 <div class="text-center">
-                    <h1><strong>Register</strong></h1>
-                </div>
-                <div id="passwordMismatchAlert" class="alert alert-danger" style="display: none;">
-                    <strong>รหัสผ่านไม่เหมือนกัน</strong>
+                    <h1><strong>Login</strong></h1>
                 </div>
                 <div id="Alert" class="alert alert-danger" style="display: none;">
                     <strong>กรุณากรอกให้ครบ</strong>
@@ -74,15 +71,8 @@
                     <div class="valid-feedback">กรอกแล้ว</div>
                     <div class="invalid-feedback">กรุณากรอก</div>
                 </div>
-                <div class="form-floating mt-3">
-                    <input type="password" class="form-control" placeholder="Enter ConfirmPassword"
-                        name="confirmpassword" required>
-                    <label for="ConfirmPassword">Confirm Password</label>
-                    <div class="valid-feedback">กรอกแล้ว</div>
-                    <div class="invalid-feedback" name="divconfirm">กรุณากรอก</div>
-                </div>
                 <div class="center-x">
-                    <button id="submitButton" class="btn mt-3 btn-secondary" type="submit">Submit</button>
+                    <button class="btn mt-3 btn-secondary">Submit</button>
                 </div>
             </form>
         </div>
@@ -110,32 +100,21 @@
             })
     })()
 
-
     function checkPasswordMatch() {
         var usernameInput = document.querySelector('input[name="username"]');
         var passwordInput = document.querySelector('input[name="password"]');
-        var confirmPasswordInput = document.querySelector('input[name="confirmpassword"]');
         var username = usernameInput.value;
         var password = passwordInput.value;
-        var confirmPassword = confirmPasswordInput.value;
-        var passwordMismatchAlert = document.getElementById('passwordMismatchAlert');
         var Alert = document.getElementById('Alert');
 
-        if (username == "" || password == "" || confirmPassword == "") {
+        if (username == "" || password == "") {
             Alert.style.display = 'block';
-            passwordMismatchAlert.style.display = 'none';
-            return false; // ไม่ส่งข้อมูลเนื่องจากรหัสผ่านไม่ตรงกัน
-        } else if (password !== confirmPassword) {
-            passwordMismatchAlert.style.display = 'block';
-            Alert.style.display = 'none';
             return false;
         } else {
-            passwordMismatchAlert.style.display = 'none';
             Alert.style.display = 'none';
-            return true; // ส่งข้อมูลเมื่อรหัสผ่านตรงกัน
+            return true;
         }
     }
-
 </script>
 
 </html>
